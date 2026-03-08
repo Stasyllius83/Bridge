@@ -18,11 +18,11 @@
     - Скрипт слушает событие BridgeLock отправка токена на контракте BridgeBNB в сети BNB. Одновременно с этим вызывает mint токена на контракте BridgePolygon в сети Polygon.
 3. Контракты оттестированы тестами
     - (./test/ContractTests.ts)
-4. Контракты развернуты и верифицированы в соответующих сетях:
-    - [BaseTokenBNB.sol](https://bscscan.com/address/0x4771e41A0c7d7FB883feDCb5c21075D0e5F1aa85)
+4. Контракты развернуты и верифицированы в соответствующих сетях:
+    - [BaseTokenBNB.sol](https://repo.sourcify.dev/97/0x4771e41A0c7d7FB883feDCb5c21075D0e5F1aa85)
     - [WrappedTokenPolygon.sol](https://amoy.polygonscan.com/address/0x4771e41a0c7d7fb883fedcb5c21075d0e5f1aa85)
     - [BridgeBNB.sol](https://bscscan.com/address/0xEADAF89d5676657D71a5D98d29aDef056c6D5C1C)
-    - [BridgePolygon.sol]()
+    - [BridgePolygon.sol](https://amoy.polygonscan.com//address/0xd8FBb76E2FE1Cb3D6c0bf2C58E27770df2794175)
 
 ## Как запустить тесты и скрипты на локальной машине
 Для запуска необходимо, чтобы на локальной машине было установлен программное обеспечение Node js.

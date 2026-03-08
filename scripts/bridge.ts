@@ -17,8 +17,8 @@ const privateKey = process.env.BRIDGE_PRIVATE_KEY as string;
 let result = hex.concat(privateKey);
 const account = privateKeyToAccount(result as `0x${string}`);
 
-const BRIDGE_BNB_ADDR = "0x";
-const BRIDGE_POLYGON_ADDR = "0x";
+const BRIDGE_BNB_ADDR = "0xEADAF89d5676657D71a5D98d29aDef056c6D5C1C";
+const BRIDGE_POLYGON_ADDR = "0xd8FBb76E2FE1Cb3D6c0bf2C58E27770df2794175";
 
 const bnbAbi = parseAbi([
     "event BridgeLock(address indexed user, uint256 amount, uint256 timestamp)"
