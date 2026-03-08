@@ -17,7 +17,7 @@
 2. Логика скрипта
     - Скрипт слушает событие BridgeLock отправка токена на контракте BridgeBNB в сети BNB. Одновременно с этим вызывает mint токена на контракте BridgePolygon в сети Polygon.
 3. Контракты оттестированы тестами
-    - (./test/ContractTests.ts)
+    - [ContractTests.ts](./test/ContractTests.ts)
 4. Контракты развернуты и верифицированы в соответствующих сетях:
     - [BaseTokenBNB.sol](https://repo.sourcify.dev/97/0x4771e41A0c7d7FB883feDCb5c21075D0e5F1aa85)
     - [WrappedTokenPolygon.sol](https://amoy.polygonscan.com/address/0x4771e41a0c7d7fb883fedcb5c21075d0e5f1aa85)
