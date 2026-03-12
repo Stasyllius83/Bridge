@@ -2,15 +2,15 @@
 pragma solidity 0.8.28;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import "./WrappedTokenPolygon.sol";
+import "./WrappedToken.sol";
 
 
-contract BridgePolygon  is Ownable {
-    WrappedTokenPolygon public wrappedToken;
+contract BridgeWrapped  is Ownable {
+    WrappedToken public wrappedToken;
 
     event BridgeMint(address indexed user, uint256 amount, uint256 timestamp);
 
-    constructor(WrappedTokenPolygon _wrappedToken) Ownable(msg.sender) {
+    constructor(WrappedToken _wrappedToken) Ownable(msg.sender) {
         wrappedToken = _wrappedToken;
     }
 

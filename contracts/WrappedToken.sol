@@ -4,9 +4,9 @@ pragma solidity 0.8.28;
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract WrappedTokenPolygon is ERC20, Ownable {
+contract WrappedToken is ERC20, Ownable {
 
-    constructor() ERC20("WrappedTokenPolygon", "WTP") Ownable(msg.sender) {}
+    constructor() ERC20("WrappedToken", "WT") Ownable(msg.sender) {}
 
     function mint(address to, uint256 amount) external onlyOwner {
         _mint(to, amount);

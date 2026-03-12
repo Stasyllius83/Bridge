@@ -27,10 +27,10 @@ export default defineConfig({
       accounts: process.env.BRIDGE_PRIVATE_KEY !== undefined ?[process.env.BRIDGE_PRIVATE_KEY] : [],
       timeout: 120000
     },
-    amoy: {
+    sepolia: {
       type: "http",
-      url: configVariable("RPC_URL_AMOY"),
-      chainId: 80002,
+      chainType: "l1",
+      url: process.env.SEPOLIA_RPC_URL || '',
       accounts: process.env.BRIDGE_PRIVATE_KEY !== undefined ?[process.env.BRIDGE_PRIVATE_KEY] : [],
       timeout: 120000
     },
@@ -38,7 +38,7 @@ export default defineConfig({
   verify: {
       etherscan: {
         enabled: true,
-        apiKey: process.env.BSC_API_KEY || process.env.POLYGON_API_KEY || "",
+        apiKey: process.env.BSC_API_KEY || process.env.ETHERSCAN_API_KEY || "",
       },
   },
 });

@@ -1,15 +1,16 @@
 import "dotenv/config";
+import {abiBridgeBNB} from "./abiBridgeBNB.ts";
+import {abiBridgeWrapped} from "./abiBridgeWrapped.ts";
 
 import {
   createPublicClient,
   createWalletClient,
   http,
-  parseAbi,
 } from "viem";
 import {
   privateKeyToAccount,
 } from "viem/accounts";
-import { bscTestnet, polygonAmoy } from "viem/chains";
+import { bscTestnet, sepolia } from "viem/chains";
 
 // Приватный ключ в формате 0x${string}
 const hex = "0x";
@@ -18,30 +19,23 @@ let result = hex.concat(privateKey);
 const account = privateKeyToAccount(result as `0x${string}`);
 
 const BRIDGE_BNB_ADDR = "0xEADAF89d5676657D71a5D98d29aDef056c6D5C1C";
-const BRIDGE_POLYGON_ADDR = "0xd8FBb76E2FE1Cb3D6c0bf2C58E27770df2794175";
-
-const bnbAbi = parseAbi([
-    "event BridgeLock(address indexed user, uint256 amount, uint256 timestamp)"
-])
-const polygonAbi = parseAbi([
-    "function releaseToken(address to, uint256 amount) external"
-])
+const BRIDGE_SEPOLIA_ADDR = "0x51d9222d28d1aa30Fc0383728c0f5030479e91fe";
 
 const publicClientBnb = createPublicClient({
     chain: bscTestnet,
     transport: http(),
 })
 
-const walletClientPolygon = createWalletClient({
+const walletClientSepolia = createWalletClient({
     account,
-    chain: polygonAmoy,
+    chain: sepolia,
     transport: http(),
 })
 
 async function main() {
     const unwatch = publicClientBnb.watchContractEvent({
       address: BRIDGE_BNB_ADDR,
-      abi: bnbAbi,
+      abi: abiBridgeBNB,
       eventName: "BridgeLock",
       onLogs: async(logs) => {
         for (const log of logs) {
@@ -51,9 +45,9 @@ async function main() {
           };
 
           try {
-            const hash = await walletClientPolygon.writeContract({
-              address: BRIDGE_POLYGON_ADDR,
-              abi: polygonAbi,
+            const hash = await walletClientSepolia.writeContract({
+              address: BRIDGE_SEPOLIA_ADDR,
+              abi: abiBridgeWrapped,
               functionName: "releaseToken",
               args: [user, amount]
             });
